@@ -15,3 +15,39 @@ body{
         flex-wrap: wrap;
     }
 }
+
+header{
+    @include desktop{
+        max-width:65%;
+        display:flex;
+        align-items: baseline;
+    }
+}
+
+h1{
+    color:$secondaryFont;
+    width:150px;
+    height:37.5px;
+    span::before{
+        content: "\f030";
+        font-family: "Font Awesome 5 Free";
+    }
+    margin-bottom: 20px;
+}
+
+h2{
+    color:$secondaryFont;
+    font-size:14px;
+    @include desktop{
+        font-size : 36px;
+    }
+}
+
+#home h2{
+    position : absolute;
+    top:15px;
+    right:0;
+    @include desktop{
+        top:37px;
+    }
+}
