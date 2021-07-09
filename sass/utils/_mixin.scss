@@ -1,0 +1,5 @@
+@mixin desktop{ //media query from desktop     @include desktop{}
+	@media screen and (min-width:map-get($breakpoints, desktop)) {
+		@content;
+	}
+}

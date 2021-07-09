@@ -1,0 +1,17 @@
+*{
+    margin : 0;
+    padding : 0;
+    box-sizing : border-box;
+    font-family: 'DM Sans', sans-serif;
+}
+
+body{
+    width:90%;
+    margin:15px auto;
+    position : relative;
+    @include desktop{
+        display:flex;
+        flex-direction:column;
+        flex-wrap: wrap;
+    }
+}

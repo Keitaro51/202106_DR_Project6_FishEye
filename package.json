@@ -4,6 +4,7 @@
   "description": "P6_charlot_romain Depuis quelques semaines, vous êtes développeur junior chez Techasite, une société de conseil spécialisée dans le développement de sites web et d'applications mobiles.",
   "main": "index.js",
   "scripts": {
+    "makeCss": "node ./node_modules/gulp/bin/gulp.js makeCss",
     "watch": "node ./node_modules/gulp/bin/gulp.js watch"
   },
   "repository": {
@@ -21,7 +22,7 @@
     "gulp-autoprefixer": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-rename": "^2.0.0",
-    "gulp-sass": "^4.1.0",
+    "gulp-sass": "^4.1.1",
     "node-sass": "^6.0.1"
   },
   "browserslist": [
@@ -29,6 +30,6 @@
   ],
   "devDependencies": {
     "browser-sync": "^2.27.4",
-    "eslint": "^7.28.0"
+    "eslint": "^7.30.0"
   }
 }

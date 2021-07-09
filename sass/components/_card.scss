@@ -1,0 +1,40 @@
+.cardsContainer{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap : wrap;
+    margin-top:50px;
+}
+
+.artistDescription{
+    max-width:526px;
+    max-height:358px;
+    text-align: center;
+    .avatar{
+        width : 200px;
+        height:200px;
+        object-fit: cover;
+        border-radius:50%;
+        //TODO missing blur avatar
+    }
+    .artist{
+        color:$primaryFont;
+        font-size: 36px;
+        margin-top:20px;
+    }
+    .localisation{
+        color:$secondaryFont;
+        font-size: 13px;
+    }
+    .slogan{
+        font-size:10px;
+    }
+    .price{
+        color:$lightWriting;
+        font-size: 9px;
+    }
+}
+
+.card{
+    margin: 10px;
+    cursor:pointer;
+}

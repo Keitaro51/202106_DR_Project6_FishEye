@@ -1,27 +1,31 @@
 @import "./utils/variables";
+@import "./utils/mixin";
+@import "./base/base";
+@import "./components/card";
+@import "./components/tag";
+@import "./components/scrollToTop";
+@import "./pages/photograph";
 
-//Responsive design
-$breakpoints: (
-  desktop:1024px
-);
 
-@mixin desktop{ //media query from desktop     @include desktop{}
-	@media screen and (min-width:map-get($breakpoints, desktop)) {
-		@content;
-	}
-}
+/*Ordre import
+Utils
+Variables
+Fonctions
+Mixins
+Placeholders
+Feuilles de style de tiers
+Base
+Composants
+Layout
+Pages
+Thèmes*/
 
-//General
-*{
-    margin : 0;
-    padding : 0;
-    box-sizing : border-box;
-    font-family: 'DM Sans', sans-serif;
-}
-body{
-    width:90%;
-    margin:15px auto;
-    position : relative;
+header{
+    @include desktop{
+        max-width:65%;
+        display:flex;
+        align-items: baseline;
+    }
 }
 
 //logo
@@ -36,70 +40,16 @@ h1{
     margin-bottom: 20px;
 }
 
-header .tags{
-    text-align: center;
-}
 
-.popup{
-    display:none;  
-}
 /*test*/
 h2{
     color:$secondaryFont;
     font-size:14px;
     position : absolute;
-    top:21px;
+    top:15px;
     right:0;
-}
-//cards
-.cardsContainer{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap : wrap;
-    margin-top:50px;
-}
-
-.artistDesc{
-    max-width:526px;
-    max-height:358px;
-    text-align: center;
-    .avatar{
-        width : 200px;
-        height:200px;
-        object-fit: cover;
-        clip-path: circle(40%);
+    @include desktop{
+        font-size : 36px;
+        top:37px;
     }
-    .artist{
-        color:$primaryFont;
-        font-size: 36px;
-        margin-top:20px;
-    }
-    .localisation{
-        color:$secondaryFont;
-        font-size: 13px;
-    }
-    .slogan{
-        font-size:10px;
-    }
-    .price{
-        color:$lightWriting;
-        font-size: 9px;
-    }
-}
-
-.tag{
-    color : $secondaryFont;
-    font-size:12px;
-    font-weight: 500;
-    padding: 5px;
-    margin : 5px;
-    border: 0.5px solid $tagBorder;
-    border-radius : 25px;
-    display:inline-flex;
-    flex-direction: row;
-    cursor:pointer;
-}
-
-.card{
-    cursor:pointer;
 }

@@ -1,0 +1,14 @@
+.scrollToTop{
+    display:none;
+    @include desktop{
+        //display:block;
+        margin:auto;
+        background: $secondaryBackground;
+        border-radius: 5px;
+        padding:8px;
+        font-weight:700; 
+        position: sticky;
+        top:15px;
+        z-index: 1;
+    }  
+}
