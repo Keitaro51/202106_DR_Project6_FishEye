@@ -3,7 +3,7 @@ const photographer = new Photographer();
 //fetch all photographers list and display as cards as photographers in home page
 photographer.allPhotographers().then(list=>{
    // console.log(list[0].photographers[0])
-    for(const photographer of list[0].photographers){
+    for(const photographer of list){
         document.getElementById('cardContainer').insertAdjacentHTML(
             'beforeend',
             `<section class="card">
