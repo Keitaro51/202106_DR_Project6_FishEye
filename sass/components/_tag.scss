@@ -12,6 +12,10 @@ header .tags{
     border-radius : 25px;
     display:inline-flex;
     cursor:pointer;
+    &:hover{
+        color : white;
+        background-color : $primaryBackground;
+    }
 }
 
 main .tags{

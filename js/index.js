@@ -1,3 +1,5 @@
+import Photographer from "./class/Photographer.js"
+
 const photographer = new Photographer();
 
 //fetch all photographers list and display as cards as photographers in home page

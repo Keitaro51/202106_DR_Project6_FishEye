@@ -1,0 +1,18 @@
+button{
+    border : none;
+    display:none;
+    @include desktop{
+        display : block;
+        background-color: $primaryBackground;
+        color:white;
+        border-radius :5px;
+        padding: 10px;
+        font-weight: 700;
+        position:absolute;
+        left:315px;
+    }
+    &:hover{
+        color : black;
+        background-color : $secondaryBackground;
+    }
+}

@@ -7,7 +7,7 @@
 
 body{
     width:90%;
-    margin:15px auto;
+    margin:15px auto 0 auto;
     position : relative;
     @include desktop{
         display:flex;

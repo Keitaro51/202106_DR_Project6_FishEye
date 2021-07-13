@@ -1,4 +1,4 @@
-class Photographer {
+export default class Photographer {
     
     async allPhotographers(){
         let data = await fetch('../data/FishEyeData.json')

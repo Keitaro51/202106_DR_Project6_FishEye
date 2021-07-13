@@ -1,0 +1,20 @@
+aside{
+    display:none;
+    
+    @include desktop{
+        background-color: $secondaryBackground;
+        width:300px;
+        border-radius:5px 5px 0 0 ;
+        padding:10px 20px;
+        position: sticky;
+        bottom:0px;
+        display:flex;
+        justify-content: space-between;
+        float:right;
+    }
+    :first-child::after{
+        content: " \f004";
+        font-family: "Font Awesome 5 Free";
+        font-weight: bold;
+    }
+}

@@ -4,13 +4,19 @@
     flex-direction:row;
     flex-wrap:wrap;
     justify-content: space-around;
+    @include desktop{
+        justify-content: space-between;
+    }
     .media{
         margin: 10px 10px;
         max-width:335px;
     }
-    img{
+    img, video{
         width:100%;
         height:190px;
+        @include desktop{
+            height:300px;  
+        }
         object-fit: cover;
         border-radius:5px;
     }    
@@ -23,7 +29,7 @@
         color: $secondaryFont;
     }
     p::after{
-        content: "\f004";
+        content: " \f004";
         font-family: "Font Awesome 5 Free";
         font-weight: bold;
     }
