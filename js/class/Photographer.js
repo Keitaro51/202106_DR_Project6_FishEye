@@ -1,5 +1,5 @@
 export default class Photographer {
-    
+     
     async allPhotographers(){
         let data = await fetch('../data/FishEyeData.json')
         data = await data.json()
@@ -13,7 +13,7 @@ export default class Photographer {
         //console.log(data[0].photographers)
         for(const artist of data[0].photographers){
             if(artist.tags.includes(tag)){
-                taggedArtists.push(`${artist.id}`) //TODO some artists have sport, other have sportS tag
+                taggedArtists.push(artist.id)
             }
         }
         return taggedArtists

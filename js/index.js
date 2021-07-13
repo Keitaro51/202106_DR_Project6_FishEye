@@ -1,12 +1,12 @@
 import Photographer from "./class/Photographer.js"
 
 const photographer = new Photographer();
+const cardContainer = document.getElementById('cardContainer')
 
 //fetch all photographers list and display as cards as photographers in home page
 photographer.allPhotographers().then(list=>{
-   // console.log(list[0].photographers[0])
     for(const photographer of list){
-        document.getElementById('cardContainer').insertAdjacentHTML(
+        cardContainer.insertAdjacentHTML(
             'beforeend',
             `<section class="card">
                 <div id="${photographer.id}" class="artistDescription">
@@ -23,7 +23,7 @@ photographer.allPhotographers().then(list=>{
         for(const tag of photographer.tags){
             document.getElementById(`photographer${photographer.id}Tags`).insertAdjacentHTML(
                 'beforeend',
-                `<span class="tag">#${tag}</span>`
+                `<span class="tag ${tag}">#${tag}</span>`
             )
         }
     }
@@ -37,14 +37,40 @@ photographer.allPhotographers().then(list=>{
     }  
 });
 
-//watch scrolling level for scrollToTop button display
-document.addEventListener("scroll",function(){
-    let cta = document.getElementsByClassName('scrollToTop')[0] 
-    if(window.scrollY>50){
-        cta.style.display='block'; //TODO se déclenche même si invisible si media query <1024px
-    }else{
-        cta.style.display='none'
-    }
-}) //TODO click listener on scrolltotop btn
 
-//photographer.taggedPhotographers('events') //TODO when click on a tag, return all photographers id possessing this tag
+let scrollToTop = document.getElementsByClassName('scrollToTop')[0]
+//watch scrolling level for scrollToTop button display
+document.addEventListener("scroll",function(){ 
+    if(window.scrollY>100){
+        scrollToTop.style.display='block';
+    }else{
+        scrollToTop.style.display='none'
+    }
+}) 
+
+//scroll to the top of the page
+scrollToTop.addEventListener("click",function(){
+    scrollToTop.style.display='none';
+    window.scrollTo({left:0,top:0, behavior:'smooth'})
+})
+
+//wait for all DOM (html AND scripted tags rendering) to be loaded to implement tag filter
+window.onload = function(){
+    let tags = document.getElementsByClassName('tag')
+    for (const tag of tags){
+        tag.addEventListener("click", function(){let tagName = tag.getAttribute('class')
+            tagName = tagName.split(' ')[1]
+            photographer.taggedPhotographers(tagName).then(list=>{
+                let sections = cardContainer.getElementsByTagName('section')
+                
+                for (const section of sections){
+                    if(list.includes(parseInt(section.firstElementChild.id)) == false){
+                        section.style.display = 'none'
+                    }else{
+                        section.style.display = 'block'
+                    }
+                }
+            }) 
+        })
+    }
+}

@@ -6,6 +6,7 @@
 }
 
 body{
+    
     width:90%;
     margin:15px auto 0 auto;
     position : relative;
@@ -47,7 +48,4 @@ h2{
     position : absolute;
     top:15px;
     right:0;
-    @include desktop{
-        top:37px;
-    }
 }
