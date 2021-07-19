@@ -11,6 +11,16 @@ export default class Media{
         return mediaLibrary
     }
 
+    async oneMedia(id){
+        let data = await fetch('../data/FishEyeData.json')
+        data = await data.json()
+        for(const media of data[0].media){
+            if(media.id == id){
+                return media
+            }
+        }
+    }
+
     async totalLikes(photographerid){
         let data = await fetch('../data/FishEyeData.json')
         data = await data.json()

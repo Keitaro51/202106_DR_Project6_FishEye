@@ -1,18 +1,30 @@
-button{
+button, input#submit{
     border : none;
-    display:none;
-    @include desktop{
-        display : block;
-        background-color: $primaryBackground;
-        color:white;
-        border-radius :5px;
-        padding: 10px;
-        font-weight: 700;
-        position:absolute;
-        left:315px;
-    }
+    background-color: $primaryBackground;
+    color:white;
+    border-radius :5px;
+    padding: 10px;
+    font-weight: 700;
     &:hover{
         color : black;
         background-color : $secondaryBackground;
+    }
+}
+#contact{
+    display:block;
+    position: sticky;
+    top:90vh;
+    margin:auto;
+    @include desktop{  
+        position:absolute;
+        left:315px;
+        top:70px;
+    }
+}
+input#submit{
+    width:200px;
+    margin:auto;
+    @include desktop{
+        margin:0;
     }
 }

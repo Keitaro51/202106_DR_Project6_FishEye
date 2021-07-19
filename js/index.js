@@ -1,7 +1,11 @@
 import Photographer from "./class/Photographer.js"
+import Tools from "./class/Tools.js"
 
 const photographer = new Photographer();
+const tool = new Tools()
 const cardContainer = document.getElementById('cardContainer')
+
+tool.homepageReload();
 
 //fetch all photographers list and display as cards as photographers in home page
 photographer.allPhotographers().then(list=>{

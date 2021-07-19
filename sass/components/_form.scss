@@ -1,0 +1,60 @@
+.form-modal{
+    display: none;
+    background : $secondaryBackground;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    overflow-y: scroll;
+    @include desktop{
+        background: rgba(196, 196, 196, 0.4);
+        height: 100%;
+        width: 100%;
+    }
+    .modalContainer{
+        width : 100vw;
+        height : 100vh;
+        @include desktop{
+            background : $secondaryBackground;
+            width : 70%;
+            height : 792px;
+            margin:75px auto;
+        }
+    }
+    h3, form{
+        max-width:800px;
+        width:90%;
+        padding:25px 0 0 25px;
+    }
+    h3{
+        font-size: 36px;
+    }
+    form{
+        display:flex;
+        flex-direction: column;
+        font-size : 24px;
+        @include desktop{
+           max-width : 80%;
+           margin:auto;
+        }
+    }
+    input, textarea{
+        border:none;
+        border-radius : 5px;
+        margin: 10px 0;
+        padding: 15px;
+        font-size : 24px;
+    }
+    .fa-times{
+        padding:30px;
+        font-size:32px;
+        position : absolute;
+        left : calc(90% - 52px);
+        color : white;
+        @include desktop{
+            top : 75px;
+            left:unset;
+            right : 15%;
+        }
+    }
+}   

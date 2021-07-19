@@ -20,9 +20,10 @@
 
 <body>
     <header>
-        <h1 class="logo">Fish<span>ye</span></h1>
+        <h1 id="toHomePage" class="logo">Fish<span>ye</span></h1>
     </header>
-    <main id="photograph">
+    <main id="photograph" aria-hidden="false">
+        <button id="contact">Contactez-moi</button>
         <section id="photographerInfo" class="card">
         </section>
         <section id="mediaContainer" class="mediaContainer">
@@ -30,5 +31,36 @@
         <aside>
         </aside>
     </main>
+    <div id = "formModal" class="form-modal" role="dialog" aria-hidden="true">
+        <div class="modalContainer">
+            <i id="closeModal" class="fas fa-times"></i>
+            
+            <h3>Contactez moi <br> Mimi Keel</h3>
+            <form>
+                <label for="firstname">Prénom </label>
+                <input type="text" name="firstname" id="firstname" required aria-required=true>
+
+                <label for="lastname">Nom </label>
+                <input type="text" name="lastname" id="lastname" required aria-required=true>
+
+                <label for="email">Email </label>
+                <input type="email" name="email" id="email" required aria-required=true>
+
+                <label for="message">Votre message</label>
+                <textarea rows="5" name="message" id="message" required aria-required=true></textarea>
+                
+                <input id="submit" class="button" type="submit">
+            </form>
+        </div>
+    </div>
+    <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
+        <div class="container"> 
+            <i id="closeLightbox" class="fas fa-times"></i>
+            <i id="previousMedia" class="fas fa-chevron-left"></i>
+            <div id="lightBoxMedia">
+            </div>
+            <i id="nextMedia" class="fas fa-chevron-right"></i>
+        </div>
+    </div>
 </body>
 </html>
