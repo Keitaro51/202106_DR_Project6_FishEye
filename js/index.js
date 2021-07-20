@@ -1,5 +1,5 @@
-import Photographer from "./class/Photographer.js"
-import Tools from "./class/Tools.js"
+import Photographer from "./utils/Photographer.js"
+import Tools from "./utils/Tools.js"
 
 const photographer = new Photographer();
 const tool = new Tools()
@@ -60,9 +60,10 @@ scrollToTop.addEventListener("click",function(){
 
 //wait for all DOM (html AND scripted tags rendering) to be loaded to implement tag filter
 window.onload = function(){
-    let tags = document.getElementsByClassName('tag')
-    for (const tag of tags){
-        tag.addEventListener("click", function(){let tagName = tag.getAttribute('class')
+    const tagFilters = document.getElementsByClassName('tag')
+    for (const tagFilter of tagFilters){
+        tagFilter.addEventListener("click", ()=>{
+            let tagName = tagFilter.getAttribute('class')
             tagName = tagName.split(' ')[1]
             photographer.taggedPhotographers(tagName).then(list=>{
                 let sections = cardContainer.getElementsByTagName('section')

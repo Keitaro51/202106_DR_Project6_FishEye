@@ -22,12 +22,14 @@
         padding:10px;
     }
     .fa-times{
-        position:absolute;
-        top:8%;//FIXME NE SE POSITIONNE JAMAIS EN FONCTION DE LA HAUTEUR DE L'IMAGE
-        left:calc(50% + 145px);
+        margin: 7px 0 0 -31px;
+        align-self: flex-start;
     }
     #lightBoxMedia{
         max-width:250px;
+        @include desktop{
+            max-width:400px;
+        }
         margin:20px;
         img, video{
             width : 100%;
