@@ -12,7 +12,6 @@ const mediaContainer = document.getElementById('mediaContainer')
 const main = document.getElementById('photograph')
 const formModal = document.getElementById('formModal')
 const lightbox = document.getElementById('lightbox')
-const photographerCard = document.getElementById('photographerInfo')
 
 tool.homepageReload();
 
@@ -47,6 +46,14 @@ photographer.onePhotographer(photographerId).then(photographerInfo=>{
 })
 
 mediaLibrary.photographerAllMedia(photographerId).then(mediaList=>{
+    renderAllMedia(mediaList)
+    
+    const mediaListByDate = [...mediaList].sort(sortByDate)
+    const mediaListByPopularity = [...mediaList].sort(sortByPopularity)
+    const mediaListByTitle = [...mediaList].sort(sortByTitle)
+})
+
+function renderAllMedia(mediaList){
     for(const media of mediaList){
         const mediaHtmlTag = mediaType(media)
         mediaContainer.insertAdjacentHTML(
@@ -55,14 +62,14 @@ mediaLibrary.photographerAllMedia(photographerId).then(mediaList=>{
                 <figure class="mediaPreview">
                     ${mediaHtmlTag}
                     <figcaption>
-                        <h3 class="mediaTitle">${media.title}</h3>
+                        <h3 class="mediaTitle">${media.title} - ${media.date}</h3>
                         <p class="mediaLikes"> ${media.likes}</p>
                     </figcaption>
                 </figure>
             </div>`
         )
     }
-})
+}
 
 mediaLibrary.totalLikes(photographerId).then(totalLikes=>{
     let price = JSON.parse(localStorage.getItem('info')).price
@@ -180,4 +187,25 @@ function getName(){
     let name = JSON.parse(localStorage.getItem('info')).name
     name = name.split(' ')[0].split('-').join(' ') /*set firstname only. Hyphenated  firstname cases*/
     return name
+}
+
+
+
+/*--------------sort by X-------------- */
+function sortByDate(a,b){
+    let da=new Date(a.date);
+    let db=new Date(b.date);
+    return (da<db)?1:-1;
+}   
+
+function sortByPopularity(a,b){
+    let pa = a.likes
+    let pb = b.likes
+    return (pa<pb)?1:-1
+}
+
+function sortByTitle(a,b){
+    let ta = a.title
+    let tb = b.title
+    return (ta>tb)?1:-1
 }
