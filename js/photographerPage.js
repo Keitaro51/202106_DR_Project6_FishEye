@@ -12,6 +12,7 @@ const mediaContainer = document.getElementById('mediaContainer')
 const main = document.getElementById('photograph')
 const formModal = document.getElementById('formModal')
 const lightbox = document.getElementById('lightbox')
+const photographerCard = document.getElementById('photographerInfo')
 
 tool.homepageReload();
 
@@ -74,12 +75,14 @@ mediaLibrary.totalLikes(photographerId).then(totalLikes=>{
 /*------------------tag filter----------------*/
 function filter(tagFilter){
     const mediaHTMLCollection = document.getElementsByClassName('media')
-    for(const media of mediaHTMLCollection)
+          
+    for(const media of mediaHTMLCollection){
         if(media.className != `media ${tagFilter}`){
             media.style.display = 'none'
         }else{
             media.style.display = 'block'
         }
+    }
 }
 
 /*Waiting for full DOM generation with all datas before allowing some functions call */
@@ -128,14 +131,30 @@ function renderLightbox(media){
     })
 }
 
+/*previous next functions - particular case for filterd img - cycling between first and last media */
 function lightboxNavigation(media){
     const previousBtn = document.getElementById('previousMedia')
     const nextBtn = document.getElementById('nextMedia')
-    media == media.parentNode.firstElementChild ? previousBtn.style.display = 'none' : previousBtn.style.display = 'inline-block'
-    media == media.parentNode.lastElementChild ? nextBtn.style.display = 'none' : nextBtn.style.display = 'inline-block'
+    let previousMedia
+    let nextMedia
 
-    previousBtn.onclick = ()=>renderLightbox(media.previousElementSibling)
-    nextBtn.onclick = ()=>renderLightbox(media.nextElementSibling)
+    media == media.parentNode.firstElementChild ? previousMedia = media.parentNode.lastElementChild : previousMedia = media.previousElementSibling
+    media == media.parentNode.lastElementChild ? nextMedia = media.parentNode.firstElementChild : nextMedia = media.nextElementSibling
+
+    //filtered media and some particular cases
+    while(previousMedia.style.display == 'none'){
+        previousMedia = previousMedia.previousElementSibling
+        if(previousMedia == media){break}
+        if(previousMedia == media.parentNode.firstElementChild){previousMedia = media.parentNode.lastElementChild}
+    }
+    while(nextMedia.style.display == 'none'){
+        nextMedia = nextMedia.nextElementSibling
+        if(nextMedia == media){break}
+        if(nextMedia == media.parentNode.lastElementChild){nextMedia = media.parentNode.firstElementChild}
+    }
+
+    previousBtn.onclick = ()=>renderLightbox(previousMedia)
+    nextBtn.onclick = ()=>renderLightbox(nextMedia)
 }
 
 function close(eltId, eltName){
