@@ -1,12 +1,14 @@
 import Photographer from "./utils/Photographer.js"
 import Media from "./utils/Media.js"
 import Tools from "./utils/Tools.js"
+import SortBy from "./components/SortBy.js"
 
 const photographerId = window.location.search.split('?id=')[1]
 
 const photographer = new Photographer()
 const mediaLibrary = new Media()
 const tool = new Tools()
+const sort = new SortBy()
 
 const mediaContainer = document.getElementById('mediaContainer')
 const main = document.getElementById('photograph')
@@ -14,6 +16,7 @@ const formModal = document.getElementById('formModal')
 const lightbox = document.getElementById('lightbox')
 
 tool.homepageReload();
+sort.selectDisplay()
 
 photographer.onePhotographer(photographerId).then(photographerInfo=>{
     const info = photographerInfo[0]
@@ -46,23 +49,48 @@ photographer.onePhotographer(photographerId).then(photographerInfo=>{
 })
 
 mediaLibrary.photographerAllMedia(photographerId).then(mediaList=>{
+    //display all media for selected photographer
     renderAllMedia(mediaList)
     
-    const mediaListByDate = [...mediaList].sort(sortByDate)
-    const mediaListByPopularity = [...mediaList].sort(sortByPopularity)
-    const mediaListByTitle = [...mediaList].sort(sortByTitle)
+    //sort media as user selected (reinit tag filters)
+    const originalSelect = document.getElementById('sortBy')
+    const newCustomSelect = document.getElementsByClassName('custom-select')[0]
+    let value = originalSelect.value
+    newCustomSelect.addEventListener('click', ()=>{
+        if(originalSelect.value != value){
+            value = originalSelect.value
+            switch(value){
+                case 'popularity':{
+                    const mediaListByPopularity = sort.sortByLikes(mediaList)
+                    renderAllMedia(mediaListByPopularity)
+                    break}
+                case 'date':{
+                    const mediaListByDate = sort.sortByDate(mediaList)
+                    renderAllMedia(mediaListByDate)
+                    break}
+                case 'title':{
+                    const mediaListByTitle = sort.sortByTitle(mediaList)
+                    renderAllMedia(mediaListByTitle)
+                    break}
+                default :
+                    renderAllMedia(mediaList)
+            }
+        }
+        lightBoxDisplay()
+    })  
 })
 
 function renderAllMedia(mediaList){
+    mediaContainer.innerHTML =''
     for(const media of mediaList){
-        const mediaHtmlTag = mediaType(media)
+        const mediaHtmlTag = tool.mediaType(media)
         mediaContainer.insertAdjacentHTML(
             'beforeend',
             `<div id="${media.id}" class="media ${media.tags}">
                 <figure class="mediaPreview">
                     ${mediaHtmlTag}
                     <figcaption>
-                        <h3 class="mediaTitle">${media.title} - ${media.date}</h3>
+                        <h3 class="mediaTitle">${media.title}</h3>
                         <p class="mediaLikes"> ${media.likes}</p>
                     </figcaption>
                 </figure>
@@ -124,7 +152,7 @@ function lightBoxDisplay(){
 function renderLightbox(media){
     const lightBoxMedia = document.getElementById('lightBoxMedia')
     mediaLibrary.oneMedia(media.id).then(mediaInfo=>{
-        const mediaHtmlTag = mediaType(mediaInfo, 'controls')
+        const mediaHtmlTag = tool.mediaType(mediaInfo, 'controls')
         lightbox.style.display = 'flex'
         lightBoxMedia.innerHTML = ''
         lightBoxMedia.insertAdjacentHTML(
@@ -171,41 +199,4 @@ function close(eltId, eltName){
         main.setAttribute('aria-hidden', false)
         eltName.setAttribute('aria-hidden', true)
     })
-}
-
-/*img or video creation tag*/
-function mediaType(media, allowControls){
-    const name = getName()
-    if(media.image){
-        return `<img  loading="lazy" src="./assets/img/Sample Photos/${name}/${media.image}" alt="${media.tags[0]} + ${media.title}"></img>`
-    }else{
-        return `<video ${allowControls} preload="metadata" src="./assets/img/Sample Photos/${name}/${media.video}" alt="${media.tags[0]} + ${media.title}"></video>`
-    }
-}
-
-function getName(){
-    let name = JSON.parse(localStorage.getItem('info')).name
-    name = name.split(' ')[0].split('-').join(' ') /*set firstname only. Hyphenated  firstname cases*/
-    return name
-}
-
-
-
-/*--------------sort by X-------------- */
-function sortByDate(a,b){
-    let da=new Date(a.date);
-    let db=new Date(b.date);
-    return (da<db)?1:-1;
-}   
-
-function sortByPopularity(a,b){
-    let pa = a.likes
-    let pb = b.likes
-    return (pa<pb)?1:-1
-}
-
-function sortByTitle(a,b){
-    let ta = a.title
-    let tb = b.title
-    return (ta>tb)?1:-1
 }
