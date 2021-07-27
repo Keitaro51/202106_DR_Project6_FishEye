@@ -8,8 +8,8 @@
     overflow-y: scroll;
     @include desktop{
         background: rgba(196, 196, 196, 0.4);
-        height: 100%;
-        width: 100%;
+        height: 100vh;
+        width: 100vw;
     }
     .modalContainer{
         width : 100vw;
@@ -17,7 +17,7 @@
         @include desktop{
             background : $secondaryBackground;
             width : 70%;
-            height : 792px;
+            min-height : 910px;
             margin:75px auto;
         }
     }
@@ -27,27 +27,32 @@
         padding:25px 0 0 25px;
     }
     h3{
-        font-size: 36px;
+        font-size: 2.25rem;
     }
     form{
         display:flex;
         flex-direction: column;
-        font-size : 24px;
+        font-size : 1.5rem;
         @include desktop{
            max-width : 80%;
            margin:auto;
         }
     }
-    input, textarea{
+    input, textarea, #errorContainer{
         border:none;
         border-radius : 5px;
         margin: 10px 0;
         padding: 15px;
-        font-size : 24px;
+        font-size : 1.5rem;
+    }
+    #errorContainer{
+        display : none;
+        background-color: white;
+        color: red;
     }
     .fa-times{
         padding:30px;
-        font-size:32px;
+        font-size:2.25erm;
         position : absolute;
         left : calc(90% - 52px);
         color : white;

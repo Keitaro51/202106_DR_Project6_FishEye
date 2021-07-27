@@ -1,7 +1,8 @@
 import Photographer from "./utils/Photographer.js"
 import Media from "./utils/Media.js"
 import Tools from "./utils/Tools.js"
-import SortBy from "./components/SortBy.js"
+import SortBy from "./utils/SortBy.js"
+import FormValid from "./utils/FormValid.js"
 
 const photographerId = window.location.search.split('?id=')[1]
 
@@ -9,6 +10,7 @@ const photographer = new Photographer()
 const mediaLibrary = new Media()
 const tool = new Tools()
 const sort = new SortBy()
+const formValid = new FormValid()
 
 const mediaContainer = document.getElementById('mediaContainer')
 const main = document.getElementById('photograph')
@@ -35,7 +37,7 @@ photographer.onePhotographer(photographerId).then(photographerInfo=>{
     for(const tag of info.tags){
         document.getElementById(`photographer${info.id}Tags`).insertAdjacentHTML(
             'beforeend',
-            `<span class="tag">#${tag}</span>`
+            `<span tabindex="0" class="tag">#${tag}</span>`
         )
     }
 
@@ -124,8 +126,6 @@ function filter(tagFilter){
 window.onload = function(){
     formModalDisplay();
     lightBoxDisplay();
-    close('closeModal', formModal)
-    close('closeLightbox', lightbox)
 }
 
 /*------------------form---------------*/
@@ -137,7 +137,19 @@ function formModalDisplay(){
         formModal.style.display = 'block'
         main.setAttribute('aria-hidden', true)
         formModal.setAttribute('aria-hidden', false)
+        document.getElementById('firstname').focus()
     })
+    close('closeModal', formModal)
+}
+
+const form = document.getElementsByTagName('form')[0]
+form.onsubmit = ()=>{
+    let firstname = document.getElementById('firstname').value
+    let lastname = document.getElementById('lastname').value
+    let email = document.getElementById('email').value  
+    formValid.validation(firstname, lastname, email)
+    
+    return false //avoid page redirection
 }
 
 /*------------------lightbox---------------*/
@@ -145,8 +157,14 @@ function formModalDisplay(){
 function lightBoxDisplay(){
     const mediaCollection = mediaContainer.getElementsByClassName('media')
     for (const media of mediaCollection){
-        media.addEventListener('click', ()=>renderLightbox(media)) 
+        media.onclick = () =>renderLightbox(media)
+        media.onkeydown = (e) =>{
+            if(e.code === 'Space' || e.code === 'Enter'){
+                renderLightbox(media)    
+            }
+        }
     }
+    close('closeLightbox', lightbox)
 }
 
 function renderLightbox(media){
@@ -166,12 +184,13 @@ function renderLightbox(media){
     })
 }
 
-/*previous next functions - particular case for filterd img - cycling between first and last media */
+//previous/next functions (click + keybord) - particular case for filterd img - cycling between first and last media
 function lightboxNavigation(media){
     const previousBtn = document.getElementById('previousMedia')
     const nextBtn = document.getElementById('nextMedia')
     let previousMedia
     let nextMedia
+    nextBtn.focus()
 
     media == media.parentNode.firstElementChild ? previousMedia = media.parentNode.lastElementChild : previousMedia = media.previousElementSibling
     media == media.parentNode.lastElementChild ? nextMedia = media.parentNode.firstElementChild : nextMedia = media.nextElementSibling
@@ -190,13 +209,62 @@ function lightboxNavigation(media){
 
     previousBtn.onclick = ()=>renderLightbox(previousMedia)
     nextBtn.onclick = ()=>renderLightbox(nextMedia)
+
+    //keybord nav with and without focus
+    previousBtn.onkeydown = (e)=>{
+        if(e.code === 'Space' || e.code === 'Enter'){
+            renderLightbox(previousMedia)    
+        }
+    }
+    nextBtn.onkeydown = (e)=>{
+        if(e.code === 'Space' || e.code === 'Enter'){
+            renderLightbox(nextMedia)    
+        }
+    }
+    lightbox.onkeydown = (e) =>{
+        if(e.code === 'ArrowLeft'){
+            renderLightbox(previousMedia)
+        }else if(e.code === 'ArrowRight'){
+            renderLightbox(nextMedia)
+        }
+    }  
 }
 
+/**
+ * close modal or lightbox depending of event
+ *
+ * @param   {string}  eltId    closeModal or closeLightbox
+ * @param   {HTMLElement}  eltName  formModal or lightbox
+ *       
+ */ 
 function close(eltId, eltName){
+    //cross btn click
     const closeElt = document.getElementById(eltId)
     closeElt.addEventListener('click', function(){
-        eltName.style.display = 'none'
-        main.setAttribute('aria-hidden', false)
-        eltName.setAttribute('aria-hidden', true)
+        hideOnClosure(eltName)
     })
+    //or escape key press
+    eltName.addEventListener('keydown', e=>{
+        if(e.code === 'Escape'){
+            hideOnClosure(eltName)   
+        }
+    })
+    //or key press on cross focus
+    closeElt.addEventListener('keydown', e=>{
+        if(e.code === 'Enter' || e.code === 'Space'){
+            hideOnClosure(eltName)  
+        }
+    })
+}
+
+/**
+ * refactored sub-function for close()
+ *
+ * @param   {HTMLElement}  eltName  [eltName description]
+ *
+ */
+function hideOnClosure(eltName){
+    eltName.style.display = 'none'
+    main.setAttribute('aria-hidden', false)
+    eltName.setAttribute('aria-hidden', true)
 }

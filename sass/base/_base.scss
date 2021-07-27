@@ -3,10 +3,11 @@
     padding : 0;
     box-sizing : border-box;
     font-family: 'DM Sans', sans-serif;
+    font-size : 16px;
+    line-height: 1.5;
 }
 
 body{
-    
     width:90%;
     margin:15px auto 0 auto;
     position : relative;
@@ -29,18 +30,23 @@ h1{
     color:$secondaryFont;
     width:150px;
     height:37.5px;
+    font-size : 2.25rem;
     span::before{
         content: "\f030";
         font-family: "Font Awesome 5 Free";
+        
     }
     margin-bottom: 20px;
+}
+.logo>span{
+    font-size : 2.25rem;
 }
 
 h2{
     color:$secondaryFont;
-    font-size:14px;
+    font-size:0.875rem;
     @include desktop{
-        font-size : 36px;
+        font-size : 2.25rem;
     }
 }
 
@@ -49,3 +55,16 @@ h2{
     top:15px;
     right:0;
 }
+
+.sr-only{
+    border: 0;
+    clip: rect(1px 1px 1px 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap 
+} 

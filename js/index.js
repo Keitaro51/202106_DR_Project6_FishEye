@@ -12,7 +12,7 @@ photographer.allPhotographers().then(list=>{
     for(const photographer of list){
         cardContainer.insertAdjacentHTML(
             'beforeend',
-            `<section class="card">
+            `<section class="card" aria-label="Information sur l'artiste ${photographer.name}">
                 <div id="${photographer.id}" class="artistDescription">
                     <img class="avatar" loading="lazy" src="./assets/img/Sample Photos/Photographers ID Photos/${photographer.portrait}" alt="Avatar de l'artiste ${photographer.name}">
                     <h3 class="artist">${photographer.name}</h3>
@@ -20,14 +20,15 @@ photographer.allPhotographers().then(list=>{
                     <p class="slogan">${photographer.tagline}</p>
                     <p class="price">${photographer.price}€/jour</p>
                 </div>
-                <div id="photographer${photographer.id}Tags" class="tags">
-                </div> 
+                <ul id="photographer${photographer.id}Tags" class="tags" role="list" aria-label="Liste des catégories à laquel l'artiste appartient">
+                </ul> 
             </section>`
         );
         for(const tag of photographer.tags){
             document.getElementById(`photographer${photographer.id}Tags`).insertAdjacentHTML(
                 'beforeend',
-                `<span class="tag ${tag}">#${tag}</span>`
+                `<li class="tag ${tag}" role="listitem">#${tag}</li>
+                <span class="sr-only">Catégorie ${tag} - Peux servir de filtre</span>`
             )
         }
     }

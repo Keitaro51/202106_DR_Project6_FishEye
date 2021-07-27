@@ -15,14 +15,14 @@
     
     <script type="module" src="../js/photographerPage.js" defer></script>
 
-    <title>FishEye - Photograph</title>
+    <title>FishEye - Photographer</title>
 </head>
 
 <body>
     <header>
-        <h1 id="toHomePage" class="logo">Fish<span>ye</span></h1>
+        <h1 id="toHomePage" class="logo" aria-label="Catégories d'artistes">Fish<span>ye</span></h1>
     </header>
-    <main id="photograph" aria-hidden="false">
+    <main id="photograph" aria-hidden="false" role="main">
         <button id="contact">Contactez-moi</button>
         <section id="photographerInfo" class="card">
         </section>
@@ -39,15 +39,19 @@
         </div>
         <section id="mediaContainer" class="mediaContainer">
         </section>
-        <aside>
+        <aside role="complementary">
         </aside>
     </main>
-    <div id = "formModal" class="form-modal" role="dialog" aria-hidden="true">
+    <div id = "formModal" class="form-modal" role="dialog" aria-hidden="true" aria-describedby="contactArtist" tabindex="-1">
         <div class="modalContainer">
             <i id="closeModal" class="fas fa-times"></i>
             
-            <h3>Contactez moi <br> Mimi Keel</h3>
-            <form>
+            <h3 id="contactArtist">Contactez moi <br> Mimi Keel</h3>
+            <form method="get"/>
+                <div id="errorContainer" aria-hidden="true">
+                    <p>Formulaire non valide<br>Liste des erreurs:</p>
+                        <ul></ul>
+                </div>
                 <label for="firstname">Prénom </label>
                 <input type="text" name="firstname" id="firstname" required aria-required=true>
 
@@ -59,18 +63,17 @@
 
                 <label for="message">Votre message</label>
                 <textarea rows="5" name="message" id="message" required aria-required=true></textarea>
-                
                 <input id="submit" class="button" type="submit">
             </form>
         </div>
     </div>
-    <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
+    <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true" tabindex="-1">
         <div class="container"> 
-            <i id="previousMedia" class="fas fa-chevron-left"></i>
+            <i id="previousMedia" class="fas fa-chevron-left" tabindex="0"></i>
             <div id="lightBoxMedia">
             </div>
-            <i id="nextMedia" class="fas fa-chevron-right"></i>
-            <i id="closeLightbox" class="fas fa-times"></i>
+            <i id="nextMedia" class="fas fa-chevron-right" tabindex="0"></i>
+            <i id="closeLightbox" class="fas fa-times" tabindex="0"></i>
         </div>
     </div>
 </body>
