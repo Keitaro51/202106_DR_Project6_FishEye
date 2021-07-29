@@ -20,10 +20,10 @@
 
 <body>
     <header>
-        <h1 id="toHomePage" class="logo" aria-label="Catégories d'artistes">Fish<span>ye</span></h1>
+        <a href="http://127.0.0.1:5500/public" role="link"> <img class="logo" src="./assets/img/logo.svg" alt="Logo Fisheye - Lien vers la page d'accueil"></a>
     </header>
     <main id="photograph" aria-hidden="false" role="main">
-        <button id="contact">Contactez-moi</button>
+        <button id="contact" arial-label="Contactez moi">Contactez-moi</button>
         <section id="photographerInfo" class="card">
         </section>
         <div id="sortByContainer">
@@ -42,13 +42,13 @@
         <aside role="complementary">
         </aside>
     </main>
-    <div id = "formModal" class="form-modal" role="dialog" aria-hidden="true" aria-describedby="contactArtist" tabindex="-1">
+    <div id = "formModal" class="form-modal" role="dialog" aria-hidden="true" aria-labeledby="contactArtist" tabindex="-1">
         <div class="modalContainer">
-            <i id="closeModal" class="fas fa-times"></i>
+            <i id="closeModal" class="fas fa-times" role="button" aria-label="close contact form"></i>
             
             <h3 id="contactArtist">Contactez moi <br> Mimi Keel</h3>
             <form method="get"/>
-                <div id="errorContainer" aria-hidden="true">
+                <div id="errorContainer" aria-hidden="true" aria-label="liste des erreurs lors de la soumission du formulaire">
                     <p>Formulaire non valide<br>Liste des erreurs:</p>
                         <ul></ul>
                 </div>
@@ -63,17 +63,17 @@
 
                 <label for="message">Votre message</label>
                 <textarea rows="5" name="message" id="message" required aria-required=true></textarea>
-                <input id="submit" class="button" type="submit">
+                <input id="submit" class="button" type="submit" role="button" aria-label="Send">
             </form>
         </div>
     </div>
-    <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true" tabindex="-1">
+    <div id="lightbox" class="lightbox" role="dialog" aria-label="image closeup view" aria-hidden="true" tabindex="-1">
         <div class="container"> 
-            <i id="previousMedia" class="fas fa-chevron-left" tabindex="0"></i>
+            <i id="previousMedia" class="fas fa-chevron-left" tabindex="0" role="link" aria-label="previous image"></i>
             <div id="lightBoxMedia">
             </div>
-            <i id="nextMedia" class="fas fa-chevron-right" tabindex="0"></i>
-            <i id="closeLightbox" class="fas fa-times" tabindex="0"></i>
+            <i id="nextMedia" class="fas fa-chevron-right" tabindex="0" role="link" aria-label="next image"></i>
+            <i id="closeLightbox" class="fas fa-times" tabindex="0" role="button" aria-label="close dialog"></i>
         </div>
     </div>
 </body>

@@ -19,9 +19,9 @@
 </head>
     
 <body>
-    <div class="scrollToTop" role="link">Passer au contenu</div>
+    <div class="scrollToTop" role="link" tabindex="0">Passer au contenu</div>
     <header>
-        <h1  id="toHomePage" class="logo" role="link" alt="Fisheye Home page" aria-label="Logo de fisheye - Lien vers la page d'accueil">Fish<span>ye</span></h1>
+        <a  href="http://127.0.0.1:5500/public" role="link"> <img class="logo" src="./assets/img/logo.svg" alt="Logo Fisheye - Lien vers la page d'accueil"></a>
         <nav role="navigation">
             <ul id="tagList" class="tags" role="list" aria-label="Catégories d'artistes">
                 <li class="tag portrait" role="listitem">#portrait</li>
@@ -44,7 +44,7 @@
         </nav>
     </header>
     <main id="home" role="main">
-        <h2>Nos photographes</h2>
+        <h1>Nos photographes</h1>
         <div id="cardContainer" class="cardsContainer" aria-label="Liste des artistes (selon filtres actifs")>
         </div>
     </main>

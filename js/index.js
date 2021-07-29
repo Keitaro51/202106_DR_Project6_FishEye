@@ -1,34 +1,30 @@
 import Photographer from "./utils/Photographer.js"
-import Tools from "./utils/Tools.js"
 
 const photographer = new Photographer();
-const tool = new Tools()
 const cardContainer = document.getElementById('cardContainer')
-
-tool.homepageReload();
 
 //fetch all photographers list and display as cards as photographers in home page
 photographer.allPhotographers().then(list=>{
     for(const photographer of list){
         cardContainer.insertAdjacentHTML(
             'beforeend',
-            `<section class="card" aria-label="Information sur l'artiste ${photographer.name}">
-                <div id="${photographer.id}" class="artistDescription">
-                    <img class="avatar" loading="lazy" src="./assets/img/Sample Photos/Photographers ID Photos/${photographer.portrait}" alt="Avatar de l'artiste ${photographer.name}">
-                    <h3 class="artist">${photographer.name}</h3>
+            `<section class="card">
+                <div id="${photographer.id}" class="artistDescription" aria-label="Artiste ${photographer.name}">
+                    <img class="avatar" loading="lazy" src="./assets/img/Sample Photos/Photographers ID Photos/${photographer.portrait}" alt="">
+                    <h2 class="artist">${photographer.name}</h2>
                     <p class="localisation">${photographer.city}, ${photographer.country}</p>
                     <p class="slogan">${photographer.tagline}</p>
                     <p class="price">${photographer.price}€/jour</p>
                 </div>
-                <ul id="photographer${photographer.id}Tags" class="tags" role="list" aria-label="Liste des catégories à laquel l'artiste appartient">
+                <ul id="photographer${photographer.id}Tags" class="tags" aria-label="Liste des catégories à laquel l'artiste appartient">
                 </ul> 
             </section>`
         );
         for(const tag of photographer.tags){
             document.getElementById(`photographer${photographer.id}Tags`).insertAdjacentHTML(
                 'beforeend',
-                `<li class="tag ${tag}" role="listitem">#${tag}</li>
-                <span class="sr-only">Catégorie ${tag} - Peux servir de filtre</span>`
+                `<li class="tag ${tag}" role="link">#${tag}</li>
+                <span class="sr-only">Tag ${tag}</span>`
             )
         }
     }
@@ -58,6 +54,12 @@ scrollToTop.addEventListener("click",function(){
     scrollToTop.style.display='none';
     window.scrollTo({left:0,top:0, behavior:'smooth'})
 })
+scrollToTop.onkeydown = (e) =>{
+    if(e.code === 'Enter'){
+        scrollToTop.style.display='none';
+        window.scrollTo({left:0,top:0, behavior:'smooth'})
+    }
+}
 
 //wait for all DOM (html AND scripted tags rendering) to be loaded to implement tag filter
 window.onload = function(){

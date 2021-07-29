@@ -1,16 +1,9 @@
 export default class Tools{
 
-    homepageReload(){
-        document.getElementById('toHomePage').addEventListener("click",function(){
-            location.replace('http://127.0.0.1:5500/public')
-        })
-        
-    }
-
     mediaType(media, allowControls){
         const name = this.getName()
         if(media.image){
-            return `<img tabindex="0" loading="lazy" src="./assets/img/Sample Photos/${name}/${media.image}" alt="${media.tags[0]} - ${media.title}"></img>`
+            return `<img width="100px" height="100px" tabindex="0" loading="lazy" src="./assets/img/Sample Photos/${name}/${media.image}" alt="${media.tags[0]} - ${media.title}"></img>`
         }else{
             return `<video tabindex="0" ${allowControls} preload="metadata" src="./assets/img/Sample Photos/${name}/${media.video}" alt="${media.tags[0]} - ${media.title}"></video>`
         }

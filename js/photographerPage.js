@@ -17,7 +17,6 @@ const main = document.getElementById('photograph')
 const formModal = document.getElementById('formModal')
 const lightbox = document.getElementById('lightbox')
 
-tool.homepageReload();
 sort.selectDisplay()
 
 photographer.onePhotographer(photographerId).then(photographerInfo=>{
@@ -27,7 +26,7 @@ photographer.onePhotographer(photographerId).then(photographerInfo=>{
         `<img  loading="lazy" class="avatar" src="./assets/img/Sample Photos/Photographers ID Photos/${info.portrait}" alt="Avatar de l'artiste ${info.name}">
         
         <div class="artistDescription">
-            <h2 class="artist">${info.name}</h2>
+            <h1 class="artist">${info.name}</h1>
             <p class="localisation">${info.city}, ${info.country}</p>
             <p class="slogan">${info.tagline}</p>
             <div id="photographer${info.id}Tags" class="tags">
@@ -37,7 +36,7 @@ photographer.onePhotographer(photographerId).then(photographerInfo=>{
     for(const tag of info.tags){
         document.getElementById(`photographer${info.id}Tags`).insertAdjacentHTML(
             'beforeend',
-            `<span tabindex="0" class="tag">#${tag}</span>`
+            `<span tabindex="0" class="tag" role="link">#${tag}</span>`
         )
     }
 
@@ -88,12 +87,12 @@ function renderAllMedia(mediaList){
         const mediaHtmlTag = tool.mediaType(media)
         mediaContainer.insertAdjacentHTML(
             'beforeend',
-            `<div id="${media.id}" class="media ${media.tags}">
+            `<div id="${media.id}" class="media ${media.tags}" role="link>
                 <figure class="mediaPreview">
                     ${mediaHtmlTag}
                     <figcaption>
-                        <h3 class="mediaTitle">${media.title}</h3>
-                        <p class="mediaLikes"> ${media.likes}</p>
+                        <h2 class="mediaTitle">${media.title}</h2>
+                        <p class="mediaLikes" aria-label="likes> ${media.likes}</p>
                     </figcaption>
                 </figure>
             </div>`
@@ -132,6 +131,8 @@ window.onload = function(){
 
 //display contact modal after contact button is generated
 function formModalDisplay(){
+    const contactArtist = document.getElementById('contactArtist')
+    contactArtist.innerHTML = `Contactez moi <br> ${JSON.parse(localStorage.getItem('info')).name}`
     const contactBtn = document.getElementById('contact')
     contactBtn.addEventListener('click', function(){
         formModal.style.display = 'block'
