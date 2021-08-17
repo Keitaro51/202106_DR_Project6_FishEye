@@ -1,4 +1,4 @@
-import Photographer from "./utils/Photographer.js"
+import Photographer from "./entity/Photographer.js"
 
 const photographer = new Photographer();
 const cardContainer = document.getElementById('cardContainer')
@@ -9,12 +9,16 @@ photographer.allPhotographers().then(list=>{
         cardContainer.insertAdjacentHTML(
             'beforeend',
             `<section class="card">
-                <div id="${photographer.id}" class="artistDescription" aria-label="Artiste ${photographer.name}">
-                    <img class="avatar" loading="lazy" src="./assets/img/Sample Photos/Photographers ID Photos/${photographer.portrait}" alt="">
-                    <h2 class="artist">${photographer.name}</h2>
-                    <p class="localisation">${photographer.city}, ${photographer.country}</p>
-                    <p class="slogan">${photographer.tagline}</p>
-                    <p class="price">${photographer.price}€/jour</p>
+                <div id="${photographer.id}" class="artistDescription" role="link" aria-label="Artiste ${photographer.name}">
+                    <div alt="${photographer.name}" tabindex="0">
+                        <img class="avatar" loading="lazy" src="./assets/img/Sample Photos/Photographers ID Photos/${photographer.portrait}" alt="">
+                        <h2 class="artist">${photographer.name}</h2>
+                    </div>
+                    <div tabindex="0">
+                        <p class="localisation">${photographer.city}, ${photographer.country}</p>
+                        <p class="slogan">${photographer.tagline}</p>
+                        <p class="price">${photographer.price}€/jour</p>
+                    </div>
                 </div>
                 <ul id="photographer${photographer.id}Tags" class="tags" aria-label="Liste des catégories à laquel l'artiste appartient">
                 </ul> 
@@ -23,8 +27,7 @@ photographer.allPhotographers().then(list=>{
         for(const tag of photographer.tags){
             document.getElementById(`photographer${photographer.id}Tags`).insertAdjacentHTML(
                 'beforeend',
-                `<li class="tag ${tag}" role="link">#${tag}</li>
-                <span class="sr-only">Tag ${tag}</span>`
+                `<li class="tag ${tag}" role="link" tabindex="0">#${tag}<span class="sr-only">Tag ${tag}</span></li>`
             )
         }
     }
@@ -34,6 +37,11 @@ photographer.allPhotographers().then(list=>{
     for(const card of photographerCard){
         card.addEventListener("click", function(){
             document.location.href=`photographer.html?id=${card.id}`
+        })
+        card.addEventListener("keydown", function(e){
+            if(e.code === 'Space' || e.code === 'Enter'){
+                document.location.href=`photographer.html?id=${card.id}`
+            }
         })
     }  
 });
@@ -55,7 +63,7 @@ scrollToTop.addEventListener("click",function(){
     window.scrollTo({left:0,top:0, behavior:'smooth'})
 })
 scrollToTop.onkeydown = (e) =>{
-    if(e.code === 'Enter'){
+    if(e.code === 'Space' || e.code === 'Enter'){
         scrollToTop.style.display='none';
         window.scrollTo({left:0,top:0, behavior:'smooth'})
     }

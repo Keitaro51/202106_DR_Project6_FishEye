@@ -1,34 +1,36 @@
-import Photographer from "./utils/Photographer.js"
-import Media from "./utils/Media.js"
-import Tools from "./utils/Tools.js"
-import SortBy from "./utils/SortBy.js"
+import Photographer from "./entity/Photographer.js"
+import Media from "./entity/Media.js"
+import Mediafactory from "./utils/Mediafactory.js"
+import SortBy from "./component/SortBy.js"
 import FormValid from "./utils/FormValid.js"
 
 const photographerId = window.location.search.split('?id=')[1]
 
 const photographer = new Photographer()
 const mediaLibrary = new Media()
-const tool = new Tools()
 const sort = new SortBy()
 const formValid = new FormValid()
+const mediaFactory = new Mediafactory()
 
 const mediaContainer = document.getElementById('mediaContainer')
 const main = document.getElementById('photograph')
 const formModal = document.getElementById('formModal')
 const lightbox = document.getElementById('lightbox')
 
-sort.selectDisplay()
+sort.selectDisplay()    
 
 photographer.onePhotographer(photographerId).then(photographerInfo=>{
     const info = photographerInfo[0]
     document.getElementById('photographerInfo').insertAdjacentHTML(
         'beforeend',
-        `<img  loading="lazy" class="avatar" src="./assets/img/Sample Photos/Photographers ID Photos/${info.portrait}" alt="Avatar de l'artiste ${info.name}">
+        `<img  loading="lazy" class="avatar" src="./assets/img/Sample Photos/Photographers ID Photos/${info.portrait}" alt="Avatar de l'artiste ${info.name}" tabindex="0">
         
         <div class="artistDescription">
-            <h1 class="artist">${info.name}</h1>
-            <p class="localisation">${info.city}, ${info.country}</p>
-            <p class="slogan">${info.tagline}</p>
+            <h1 class="artist" tabindex="0">${info.name}</h1>
+            <div tabindex="0">
+                <p class="localisation">${info.city}, ${info.country}</p>
+                <p class="slogan">${info.tagline}</p>
+            </div>
             <div id="photographer${info.id}Tags" class="tags">
             </div> 
         </div>` 
@@ -81,18 +83,23 @@ mediaLibrary.photographerAllMedia(photographerId).then(mediaList=>{
     })  
 })
 
+/**
+ * render all current artist medias
+ *
+ * @param   {HTMLCollection}  mediaList  [media list]
+ */
 function renderAllMedia(mediaList){
     mediaContainer.innerHTML =''
     for(const media of mediaList){
-        const mediaHtmlTag = tool.mediaType(media)
+        const mediaHtmlTag = mediaFactory.mediaType(media)
         mediaContainer.insertAdjacentHTML(
             'beforeend',
             `<div id="${media.id}" class="media ${media.tags}" role="link>
                 <figure class="mediaPreview">
                     ${mediaHtmlTag}
                     <figcaption>
-                        <h2 class="mediaTitle">${media.title}</h2>
-                        <p class="mediaLikes" aria-label="likes> ${media.likes}</p>
+                        <h2 class="mediaTitle" tabindex="0">${media.title}</h2>
+                        <p class="mediaLikes" aria-label="likes" tabindex="0"> ${media.likes}</p>
                     </figcaption>
                 </figure>
             </div>`
@@ -108,7 +115,12 @@ mediaLibrary.totalLikes(photographerId).then(totalLikes=>{
         <span>${price}€ / jour</span>`
     )
 })
-/*------------------tag filter----------------*/
+
+/**
+ * tag filter
+ *
+ * @param   {string}  tagFilter  [tagFilter name]
+ */
 function filter(tagFilter){
     const mediaHTMLCollection = document.getElementsByClassName('media')
           
@@ -127,9 +139,10 @@ window.onload = function(){
     lightBoxDisplay();
 }
 
-/*------------------form---------------*/
-
-//display contact modal after contact button is generated
+/**
+ * display contact modal (form) after contact button is generated
+ *
+ */
 function formModalDisplay(){
     const contactArtist = document.getElementById('contactArtist')
     contactArtist.innerHTML = `Contactez moi <br> ${JSON.parse(localStorage.getItem('info')).name}`
@@ -153,8 +166,9 @@ form.onsubmit = ()=>{
     return false //avoid page redirection
 }
 
-/*------------------lightbox---------------*/
-
+/**
+ * lightBox (navigation between medias) display
+ */
 function lightBoxDisplay(){
     const mediaCollection = mediaContainer.getElementsByClassName('media')
     for (const media of mediaCollection){
@@ -168,16 +182,20 @@ function lightBoxDisplay(){
     close('closeLightbox', lightbox)
 }
 
+/**
+ * lightbox rendering depending on choosen media
+ * @param {HTMLElement} media - one media 
+ */
 function renderLightbox(media){
     const lightBoxMedia = document.getElementById('lightBoxMedia')
     mediaLibrary.oneMedia(media.id).then(mediaInfo=>{
-        const mediaHtmlTag = tool.mediaType(mediaInfo, 'controls')
+        const mediaHtmlTag = mediaFactory.mediaType(mediaInfo, 'controls')
         lightbox.style.display = 'flex'
         lightBoxMedia.innerHTML = ''
         lightBoxMedia.insertAdjacentHTML(
             'beforeend',
             `${mediaHtmlTag}
-            <h4>${mediaInfo.title}</h4>`
+            <h4 tabindex="0">${mediaInfo.title}</h4>`
         )
         main.setAttribute('aria-hidden', true)
         lightbox.setAttribute('aria-hidden', false)
@@ -185,14 +203,20 @@ function renderLightbox(media){
     })
 }
 
-//previous/next functions (click + keybord) - particular case for filterd img - cycling between first and last media
-function lightboxNavigation(media){
+
+/**
+ * previous/next functions (click + keyboard)
+ *
+ * @param   {HTMLElement}  media  [current displayed media]
+ *
+ */function lightboxNavigation(media){
     const previousBtn = document.getElementById('previousMedia')
     const nextBtn = document.getElementById('nextMedia')
     let previousMedia
     let nextMedia
     nextBtn.focus()
 
+    //cyclic behaviours
     media == media.parentNode.firstElementChild ? previousMedia = media.parentNode.lastElementChild : previousMedia = media.previousElementSibling
     media == media.parentNode.lastElementChild ? nextMedia = media.parentNode.firstElementChild : nextMedia = media.nextElementSibling
 

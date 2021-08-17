@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="author" content="Romain Charlot">
     <meta name="description" content="">
-    <link rel="shortcut icon" href="" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/img/logo.svg" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     
     <link rel="stylesheet" type="text/css" href="./assets/css/minifiedMain.css">
@@ -13,21 +13,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"> 
     
-    <script type="module" src="../js/photographerPage.js" defer></script>
+    <script type="module" src="../js/photographerPage.js"></script>
 
     <title>FishEye - Photographer</title>
 </head>
 
 <body>
     <header>
-        <a href="http://127.0.0.1:5500/public" role="link"> <img class="logo" src="./assets/img/logo.svg" alt="Logo Fisheye - Lien vers la page d'accueil"></a>
+        <a href="http://127.0.0.1:5500/public"> <img class="logo" src="./assets/img/logo.svg" alt="Logo Fisheye - Lien vers la page d'accueil" tabindex="0"></a>
     </header>
-    <main id="photograph" aria-hidden="false" role="main">
-        <button id="contact" arial-label="Contactez moi">Contactez-moi</button>
+    <main id="photograph" aria-hidden="false">
         <section id="photographerInfo" class="card">
         </section>
+        <aside tabindex="0" aria-label="Tarif de l'artiste">
+        </aside>
+        <button id="contact" tabindex="0">Contactez-moi</button>
         <div id="sortByContainer">
-            <label for="sortBy">Trier par</label>
+            <label for="sortBy" tabindex="0">Trier par</label>
             <div class="custom-select">
                 <select name="sortBy" id="sortBy">
                     <option value="">select</option>
@@ -39,15 +41,13 @@
         </div>
         <section id="mediaContainer" class="mediaContainer">
         </section>
-        <aside role="complementary">
-        </aside>
     </main>
-    <div id = "formModal" class="form-modal" role="dialog" aria-hidden="true" aria-labeledby="contactArtist" tabindex="-1">
-        <div class="modalContainer">
-            <i id="closeModal" class="fas fa-times" role="button" aria-label="close contact form"></i>
+    <div id = "formModal" class="form-modal" role="dialog" aria-hidden="true" aria-labelledby="contactArtist" tabindex="-1">
+        <div class="modalContainer" role="form" aria-labelledby="contactArtist">
+            <i id="closeModal" class="fas fa-times" role="button" aria-label="close contact form" tabindex="0"></i>
             
-            <h3 id="contactArtist">Contactez moi <br> Mimi Keel</h3>
-            <form method="get"/>
+            <h3 id="contactArtist">Contactez moi</h3>
+            <form method="get">
                 <div id="errorContainer" aria-hidden="true" aria-label="liste des erreurs lors de la soumission du formulaire">
                     <p>Formulaire non valide<br>Liste des erreurs:</p>
                         <ul></ul>
@@ -63,12 +63,12 @@
 
                 <label for="message">Votre message</label>
                 <textarea rows="5" name="message" id="message" required aria-required=true></textarea>
-                <input id="submit" class="button" type="submit" role="button" aria-label="Send">
+                <input id="submit" class="button" type="submit" aria-label="Send">
             </form>
         </div>
     </div>
-    <div id="lightbox" class="lightbox" role="dialog" aria-label="image closeup view" aria-hidden="true" tabindex="-1">
-        <div class="container"> 
+    <div id="lightbox" class="lightbox" role="dialog" aria-label="image closeup view" aria-hidden="true">
+        <div class="container" tabindex="0"> 
             <i id="previousMedia" class="fas fa-chevron-left" tabindex="0" role="link" aria-label="previous image"></i>
             <div id="lightBoxMedia">
             </div>

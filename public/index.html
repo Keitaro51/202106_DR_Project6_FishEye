@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="author" content="Romain Charlot">
     <meta name="description" content="">
-    <link rel="shortcut icon" href="" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/img/logo.svg" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     
     <link rel="stylesheet" type="text/css" href="./assets/css/minifiedMain.css">
@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"> 
 
-    <script type="module" src="../js/index.js" defer></script>
+    <script type="module" src="../js/index.js"></script>
 
     <title>FishEye - Accueil</title>
 </head>
@@ -21,31 +21,23 @@
 <body>
     <div class="scrollToTop" role="link" tabindex="0">Passer au contenu</div>
     <header>
-        <a  href="http://127.0.0.1:5500/public" role="link"> <img class="logo" src="./assets/img/logo.svg" alt="Logo Fisheye - Lien vers la page d'accueil"></a>
-        <nav role="navigation">
-            <ul id="tagList" class="tags" role="list" aria-label="Catégories d'artistes">
-                <li class="tag portrait" role="listitem">#portrait</li>
-                <span class="sr-only">Filtre les artistes via la catégorie portrait</span>
-                <li class="tag art" role="listitem">#art</li>
-                <span class="sr-only">Filtre les artistes via la catégorie art</span>
-                <li class="tag fashion" role="listitem">#fashion</li>
-                <span class="sr-only">Filtre les artistes via la catégorie fashion</span>
-                <li class="tag architecture" role="listitem">#architecture</li>
-                <span class="sr-only">Filtre les artistes via la catégorie architecture</span>
-                <li class="tag travel" role="listitem">#travel</li>
-                <span class="sr-only">Filtre les artistes via la catégorie travel</span>
-                <li class="tag sport" role="listitem">#sport</li>
-                <span class="sr-only">Filtre les artistes via la catégorie sport</span>
-                <li class="tag animals" role="listitem">#animals</li>
-                <span class="sr-only">Filtre les artistes via la catégorie animals</span>
-                <li class="tag events" role="listitem">#events</li>
-                <span class="sr-only">Filtre les artistes via la catégorie events</span>
+        <a  href="http://127.0.0.1:5500/public"> <img class="logo" src="./assets/img/logo.svg" alt="Logo Fisheye - Lien vers la page d'accueil"></a>
+        <nav>
+            <ul id="tagList" class="tags" aria-label="Catégories d'artistes">
+                <li class="tag portrait" tabindex="0">#portrait<span class="sr-only">Filtre les artistes via la catégorie portrait</span></li>
+                <li class="tag art" tabindex="0">#art<span class="sr-only">Filtre les artistes via la catégorie art</span></li>
+                <li class="tag fashion" tabindex="0">#fashion<span class="sr-only">Filtre les artistes via la catégorie fashion</span></li>
+                <li class="tag architecture" tabindex="0">#architecture<span class="sr-only">Filtre les artistes via la catégorie architecture</span></li>
+                <li class="tag travel" tabindex="0">#travel<span class="sr-only">Filtre les artistes via la catégorie travel</span></li>
+                <li class="tag sport" tabindex="0">#sport<span class="sr-only">Filtre les artistes via la catégorie sport</span></li>
+                <li class="tag animals" tabindex="0">#animals<span class="sr-only">Filtre les artistes via la catégorie animals</span></li>
+                <li class="tag events" tabindex="0">#events<span class="sr-only">Filtre les artistes via la catégorie events</span></li>
             </ul>
         </nav>
     </header>
-    <main id="home" role="main">
-        <h1>Nos photographes</h1>
-        <div id="cardContainer" class="cardsContainer" aria-label="Liste des artistes (selon filtres actifs")>
+    <main id="home">
+        <h1 tabindex="0">Nos photographes</h1>
+        <div id="cardContainer" class="cardsContainer" aria-label="Liste des artistes (selon filtres actifs)">
         </div>
     </main>
 </body>
