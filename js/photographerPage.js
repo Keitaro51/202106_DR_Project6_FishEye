@@ -94,17 +94,24 @@ function renderAllMedia(mediaList){
         const mediaHtmlTag = mediaFactory.mediaType(media)
         mediaContainer.insertAdjacentHTML(
             'beforeend',
-            `<div id="${media.id}" class="media ${media.tags}" role="link>
+            `<div id="${media.id}" class="media ${media.tags}" role="link">
                 <figure class="mediaPreview">
                     ${mediaHtmlTag}
                     <figcaption>
                         <h2 class="mediaTitle" tabindex="0">${media.title}</h2>
-                        <p class="mediaLikes" aria-label="likes" tabindex="0"> ${media.likes}</p>
+                        <p class="mediaLikes" aria-label="likes" tabindex="0">${media.likes}</p>
                     </figcaption>
                 </figure>
             </div>`
         )
     }
+    const likeBtn = Array.from(document.getElementsByClassName('mediaLikes'))
+    likeBtn.forEach(btn => {
+        btn.addEventListener('click',(e)=>{
+            mediaLibrary.addLike(e)
+        })
+    })
+        
 }
 
 mediaLibrary.totalLikes(photographerId).then(totalLikes=>{
@@ -172,12 +179,10 @@ form.onsubmit = ()=>{
 function lightBoxDisplay(){
     const mediaCollection = mediaContainer.getElementsByClassName('media')
     for (const media of mediaCollection){
-        media.onclick = () =>renderLightbox(media)
-        media.onkeydown = (e) =>{
-            if(e.code === 'Space' || e.code === 'Enter'){
-                renderLightbox(media)    
-            }
-        }
+        const mediaPreview = media.firstElementChild.firstElementChild
+        mediaPreview.onclick = () =>renderLightbox(media)
+        
+        keyboardNav(mediaPreview,[['Space','Enter'],[media]])
     }
     close('closeLightbox', lightbox)
 }
@@ -235,24 +240,49 @@ function renderLightbox(media){
     previousBtn.onclick = ()=>renderLightbox(previousMedia)
     nextBtn.onclick = ()=>renderLightbox(nextMedia)
 
-    //keybord nav with and without focus
-    previousBtn.onkeydown = (e)=>{
-        if(e.code === 'Space' || e.code === 'Enter'){
-            renderLightbox(previousMedia)    
+    keyboardNav(previousBtn,[['Space','Enter'],[previousMedia]])
+    keyboardNav(nextBtn,[['Space','Enter'],[nextMedia]])
+    keyboardNav(lightbox, [['ArrowLeft','ArrowRight'], [previousMedia, nextMedia]])
+
+    // previousBtn.onkeydown = (e)=>{
+    //     if(e.code === 'Space' || e.code === 'Enter'){
+    //         renderLightbox(previousMedia)    
+    //     }
+    // }
+    // nextBtn.onkeydown = (e)=>{
+    //     if(e.code === 'Space' || e.code === 'Enter'){
+    //         renderLightbox(nextMedia)    
+    //     }
+    // }
+
+    // lightbox.onkeydown = (e) =>{
+    //     if(e.code === 'ArrowLeft'){
+    //         renderLightbox(previousMedia)
+    //     }else if(e.code === 'ArrowRight'){
+    //         renderLightbox(nextMedia)
+    //     }
+    // }  
+}
+
+/**
+ * keybord nav with and without focus
+ *
+ * @param   {HTMLElement}  elt    [context element]
+ * @param   {Array}  array  [[key list] , [action list]]
+ *
+ */
+ function keyboardNav(elt,array){
+    elt.onkeydown = (e)=>{
+        for(let i= 0; i<array.length; i++){
+            if(e.code === array[0][i]){
+                if(!array[1][i]){
+                    renderLightbox(array[1][array[1].length-1])
+                }else{
+                    renderLightbox(array[1][i])
+                }    
+            }
         }
     }
-    nextBtn.onkeydown = (e)=>{
-        if(e.code === 'Space' || e.code === 'Enter'){
-            renderLightbox(nextMedia)    
-        }
-    }
-    lightbox.onkeydown = (e) =>{
-        if(e.code === 'ArrowLeft'){
-            renderLightbox(previousMedia)
-        }else if(e.code === 'ArrowRight'){
-            renderLightbox(nextMedia)
-        }
-    }  
 }
 
 /**

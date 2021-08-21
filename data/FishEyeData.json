@@ -70,7 +70,8 @@
       "tags": ["fashion"],
       "likes": 62,
       "date": "2011-12-08",
-      "price": 55
+      "price": 55,
+      "alt" : "femme posant en tenue de sport jaune devant un panneau de basket "
     },
     {
       "id": 8520927,
@@ -80,7 +81,8 @@
       "tags": ["fashion"],
       "likes": 11,
       "date": "2011-11-06",
-      "price": 55
+      "price": 55,
+      "alt" : "femme portant une tenue à motifs feuilles et posant au mileu d'un pont, en ville"
     },
     {
       "id": 9025895,
@@ -90,7 +92,8 @@
       "tags": ["fashion"],
       "likes": 72,
       "date": "2013-08-12",
-      "price": 55
+      "price": 55,
+      "alt" : "femme avec un sac rouge edvant un mur à damier"
     },
     {
       "id": 9275938,
@@ -100,7 +103,8 @@
       "tags": ["events"],
       "likes": 69,
       "date": "2018-02-22",
-      "price": 55
+      "price": 55,
+      "alt" : "coupole décorée pour un mariage"
     },
     {
       "id": 2053494,
@@ -110,7 +114,8 @@
       "tags": ["events"],
       "likes": 2,
       "date": "2020-05-25",
-      "price": 55
+      "price": 55,
+      "alt" : "couple de mariés de dos, devant une assemblée tenant des batons qui font des étincelles"
     },
     {
       "id": 7324238,
@@ -120,7 +125,8 @@
       "tags": ["events"],
       "likes": 33,
       "date": "2019-06-12",
-      "price": 55
+      "price": 55,
+      "alt" : "salle de reception décorée pour une soirée de 18 ans d'anniversaires"
     },
     {
       "id": 8328953,
@@ -130,7 +136,8 @@
       "tags": ["art"],
       "likes": 24,
       "date": "2011-12-08",
-      "price": 100
+      "price": 100,
+      "alt" : "sculpture de cheval en bois"
     },
     {
       "id": 7502053,
@@ -140,7 +147,8 @@
       "tags": ["art"],
       "likes": 88,
       "date": "2007-05-07",
-      "price": 55
+      "price": 55,
+      "alt" : "peinture murale représantant un homme multicolore, avec un triangle blanc en son centre"
     },
     {
       "id": 8523492,
@@ -150,7 +158,8 @@
       "tags": ["art"],
       "likes": 24,
       "date": "2018-05-05",
-      "price": 55
+      "price": 55,
+      "alt" : "couloir de métro taggué et franchement dégueu"
     },
     {
       "id": 75902334,
@@ -160,9 +169,20 @@
       "tags": ["art"],
       "likes": 75,
       "date": "2019-11-25",
-      "price": 55
+      "price": 55,
+      "alt" : "peinture murale d'une foule de pigeons rouges et bleus au regard stupide"
     },
-
+    {
+      "id": 7397323,
+      "photographerId": 925,
+      "title": "Swimming butterfly",
+      "image": "Sport_Butterfly.jpg",
+      "tags": ["sport"],
+      "likes": 32,
+      "date": "2013-02-30",
+      "price": 60,
+      "alt" : "nageur faisant une nage papillon au milieu d'une piscine"
+    },
     {
       "id": 73852953,
       "photographerId": 925,
@@ -171,7 +191,8 @@
       "tags": ["sport"],
       "likes": 52,
       "date": "2013-02-30",
-      "price": 70
+      "price": 70,
+      "alt" : "équipe d'aveyron vu de dessus, en plein effort"
     },
     {
       "id": 92758372,
@@ -181,7 +202,8 @@
       "tags": ["fashion"],
       "likes": 58,
       "date": "2018-07-17",
-      "price": 70
+      "price": 70,
+      "alt" : "femme noire en robe bleu claire et homme blanc blond en costume beige, pratiquant une danse contemporaine"
     },
     {
       "id": 32958383,
@@ -191,7 +213,8 @@
       "tags": ["fashion"],
       "likes": 11,
       "date": "2019-08-12",
-      "price": 70
+      "price": 70,
+      "alt" : "femme noire descendant des escaliers dans une rue et portant des lunettes de soleil, une robe rouge et des abskets blanches"
     },
     {
       "id": 928587383,
@@ -201,7 +224,8 @@
       "tags": ["events"],
       "likes": 2,
       "date": "2019-01-02",
-      "price": 70
+      "price": 70,
+      "alt" : "groupe de 5 personnes en pleine présentation de travail, avec ordinateurs portables et mur de post-it"
     },
     {
       "id": 725639493,
@@ -211,7 +235,8 @@
       "tags": ["events"],
       "likes": 3,
       "date": "2019-05-20",
-      "price": 70
+      "price": 70,
+      "alt" : "réunion de présentation décontractée d'un objet devant un groupe de salariés dans une salle à la décoration industrielle"
     },
     {
       "id": 23394384,
@@ -221,7 +246,8 @@
       "tags": ["events"],
       "likes": 52,
       "date": "2019-07-18",
-      "price": 70
+      "price": 70,
+      "alt" : "prise de vue en noir et blanc d'une musicienne aux cheveux longs devant un synthétiseur"
     },
     {
       "id": 87367293,
@@ -231,7 +257,8 @@
       "tags": ["events"],
       "likes": 23,
       "date": "2018-02-22",
-      "price": 70
+      "price": 70,
+      "alt" : "chanteuse sur une scène"
     },
     {
       "id": 593834784,
@@ -241,7 +268,8 @@
       "tags": ["animals"],
       "likes": 52,
       "date": "2017-03-13",
-      "price": 70
+      "price": 70,
+      "alt" : "cerf majestueux avec de longs bois dans une clairière"
     },
     {
       "id": 83958935,
@@ -251,7 +279,8 @@
       "tags": ["animals"],
       "likes": 52,
       "date": "2016-06-12",
-      "price": 70
+      "price": 70,
+      "alt" : "chiot jouant avec sa laisse sur le sable d'une plage devant un coucher de soleil"
     },
 
     {
@@ -262,7 +291,8 @@
       "tags": ["travel"],
       "likes": 23,
       "date": "2017-03-18",
-      "price": 45
+      "price": 45,
+      "alt" : "crête rocheuse vue du ciel"
     },
     {
       "id": 343423425,
@@ -272,7 +302,8 @@
       "tags": ["travel"],
       "likes": 101,
       "date": "2017-04-03",
-      "price": 45
+      "price": 45,
+      "alt" : "foule prenant un bain dans une source chaude en extérieur"
     },
     {
       "id": 73434243,
@@ -282,7 +313,9 @@
       "tags": ["travel"],
       "likes": 99,
       "date": "2018-04-30",
-      "price": 45
+      "price": 45,
+      "alt" : "route sinueuse dans une plaine desertique valonnée"
+      
     },
     {
       "id": 23425523,
@@ -292,7 +325,8 @@
       "tags": ["travel"],
       "likes": 34,
       "date": "2016-04-05",
-      "price": 45
+      "price": 45,
+      "alt" : "pont métalique dans une forêt"
     },
     {
       "id": 23134513,
@@ -302,7 +336,8 @@
       "tags": ["travel"],
       "likes": 23,
       "date": "2017-03-18",
-      "price": 45
+      "price": 45,
+      "alt" : "prise de vue du devant d'un petit bateau en bois dans un lac entouré de montagnes"
     },
     {
       "id": 92352352,
@@ -312,7 +347,8 @@
       "tags": ["portrait"],
       "likes": 66,
       "date": "2018-05-24",
-      "price": 45
+      "price": 45,
+      "alt" : "portrait de femme rousse souriante avec de nombreuses taches de rousseurs, les cheveux en chignon et du rouge à lèvre"
     },
     {
       "id": 34513453,
@@ -322,7 +358,8 @@
       "tags": ["portrait"],
       "likes": 52,
       "date": "2017-04-21",
-      "price": 45
+      "price": 45,
+      "alt" : "portrait sur fond noir du visage d'un homme ayant une coupe afro"
     },
     {
       "id": 23523533,
@@ -332,7 +369,8 @@
       "tags": ["portrait"],
       "likes": 95,
       "date": "2018-11-02",
-      "price": 45
+      "price": 45,
+      "alt" : "portrait de face d'une jeune femme noire aux cheveux courts"
     },
     {
       "id": 525834234,
@@ -342,7 +380,8 @@
       "tags": ["portrait"],
       "likes": 25,
       "date": "2019-01-02",
-      "price": 45
+      "price": 45,
+      "alt" : "portrait en noir et blanc d'un homme d'âge mur qui fume une cigarette"
     },
 
     {
@@ -353,7 +392,8 @@
       "tags": ["travel"],
       "likes": 88,
       "date": "2019-02-03",
-      "price": 45
+      "price": 45,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 625025343,
@@ -363,7 +403,8 @@
       "tags": ["travel"],
       "likes": 85,
       "date": "2019-04-03",
-      "price": 45
+      "price": 45,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 2525345343,
@@ -373,7 +414,8 @@
       "tags": ["portrait"],
       "likes": 34,
       "date": "2019-04-07",
-      "price": 45
+      "price": 45,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 2523434634,
@@ -383,7 +425,8 @@
       "tags": ["portrait"],
       "likes": 63,
       "date": "2019-04-07",
-      "price": 45
+      "price": 45,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 398847109,
@@ -393,7 +436,8 @@
       "tags": ["portrait"],
       "likes": 55,
       "date": "2019-06-20",
-      "price": 45
+      "price": 45,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 2534342,
@@ -403,7 +447,8 @@
       "tags": ["events"],
       "likes": 25,
       "date": "2019-06-21",
-      "price": 45
+      "price": 45,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 65235234,
@@ -413,7 +458,8 @@
       "tags": ["events"],
       "likes": 52,
       "date": "2019-06-25",
-      "price": 45
+      "price": 45,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 23523434,
@@ -423,7 +469,8 @@
       "tags": ["events"],
       "likes": 77,
       "date": "2019-06-28",
-      "price": 45
+      "price": 45,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 5234343,
@@ -433,7 +480,8 @@
       "tags": ["animals"],
       "likes": 142,
       "date": "2019-08-23",
-      "price": 60
+      "price": 60,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 95234343,
@@ -443,7 +491,8 @@
       "tags": ["animals"],
       "likes": 59,
       "date": "2019-07-02",
-      "price": 60
+      "price": 60,
+      "alt" : "texte alt à définir par le photographe"
     },
 
     {
@@ -454,7 +503,8 @@
       "tags": ["travel"],
       "likes": 25,
       "date": "2019-04-03",
-      "price": 60
+      "price": 60,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 2523434,
@@ -464,7 +514,8 @@
       "tags": ["travel"],
       "likes": 53,
       "date": "2019-05-06",
-      "price": 60
+      "price": 60,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 95293534,
@@ -474,7 +525,8 @@
       "tags": ["travel"],
       "likes": 33,
       "date": "2019-05-12",
-      "price": 60
+      "price": 60,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 356234343,
@@ -484,7 +536,8 @@
       "tags": ["travel"],
       "likes": 53,
       "date": "2019-06-20",
-      "price": 60
+      "price": 60,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 235234343,
@@ -494,7 +547,8 @@
       "tags": ["travel"],
       "likes": 63,
       "date": "2019-06-26",
-      "price": 60
+      "price": 60,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 6234234343,
@@ -504,7 +558,8 @@
       "tags": ["architecture"],
       "likes": 52,
       "date": "2019-06-30",
-      "price": 60
+      "price": 60,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 6525666253,
@@ -514,7 +569,8 @@
       "tags": ["architecture"],
       "likes": 63,
       "date": "2019-07-20",
-      "price": 60
+      "price": 60,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 98252523433,
@@ -524,7 +580,8 @@
       "tags": ["architecture"],
       "likes": 88,
       "date": "2020-01-05",
-      "price": 60
+      "price": 60,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 9259398453,
@@ -534,7 +591,8 @@
       "tags": ["architecture"],
       "likes": 57,
       "date": "2020-01-20",
-      "price": 65
+      "price": 65,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 3523523534,
@@ -544,7 +602,8 @@
       "tags": ["architecture"],
       "likes": 54,
       "date": "2020-05-05",
-      "price": 60
+      "price": 60,
+      "alt" : "texte alt à définir par le photographe"
     },
 
     {
@@ -555,7 +614,8 @@
       "tags": ["sport"],
       "likes": 150,
       "date": "2018-02-30",
-      "price": 70
+      "price": 70,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 235234342,
@@ -565,7 +625,8 @@
       "tags": ["sport"],
       "likes": 101,
       "date": "2018-03-05",
-      "price": 65
+      "price": 65,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 235343222,
@@ -575,7 +636,8 @@
       "tags": ["sport"],
       "likes": 103,
       "date": "2018-03-10",
-      "price": 70
+      "price": 70,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 7775342343,
@@ -585,7 +647,8 @@
       "tags": ["sport"],
       "likes": 77,
       "date": "2018-04-16",
-      "price": 50
+      "price": 50,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 9253445784,
@@ -595,7 +658,8 @@
       "tags": ["sport"],
       "likes": 88,
       "date": "2018-04-22",
-      "price": 65
+      "price": 65,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 22299394,
@@ -605,7 +669,8 @@
       "tags": ["sport"],
       "likes": 95,
       "date": "2018-04-27",
-      "price": 70
+      "price": 70,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 3452342633,
@@ -615,7 +680,8 @@
       "tags": ["architecture"],
       "likes": 52,
       "date": "2018-05-03",
-      "price": 75
+      "price": 75,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 939234243,
@@ -625,7 +691,8 @@
       "tags": ["architecture"],
       "likes": 55,
       "date": "2018-05-10",
-      "price": 72
+      "price": 72,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 222959233,
@@ -635,7 +702,8 @@
       "tags": ["architecture"],
       "likes": 85,
       "date": "2018-05-15",
-      "price": 71
+      "price": 71,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 965933434,
@@ -645,7 +713,8 @@
       "tags": ["architecture"],
       "likes": 66,
       "date": "2018-05-20",
-      "price": 58
+      "price": 58,
+      "alt" : "texte alt à définir par le photographe"
     },
     {
       "id": 777723343,
@@ -655,7 +724,8 @@
       "tags": ["architecture"],
       "likes": 79,
       "date": "2018-05-21",
-      "price": 80
+      "price": 80,
+      "alt" : "texte alt à définir par le photographe"
     }
   ]
 }]

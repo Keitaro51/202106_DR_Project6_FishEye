@@ -32,4 +32,11 @@ export default class Media{
         }
         return sum
     }
+
+    async addLike(elt){
+        let newLike =parseInt(elt.target.textContent) + 1
+        elt.target.textContent = `${newLike}`
+        const total = document.getElementsByTagName('aside')[0].firstElementChild
+        total.textContent = `${parseInt(total.textContent) + 1}`
+    }
 }

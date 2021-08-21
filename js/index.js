@@ -11,7 +11,7 @@ photographer.allPhotographers().then(list=>{
             `<section class="card">
                 <div id="${photographer.id}" class="artistDescription" role="link" aria-label="Artiste ${photographer.name}">
                     <div alt="${photographer.name}" tabindex="0">
-                        <img class="avatar" loading="lazy" src="./assets/img/Sample Photos/Photographers ID Photos/${photographer.portrait}" alt="">
+                        <img class="avatar" loading="lazy" src="./assets/img/Sample Photos/Photographers ID Photos/${photographer.portrait}" alt="Portrait de l'artiste ${photographer.name}">
                         <h2 class="artist">${photographer.name}</h2>
                     </div>
                     <div tabindex="0">
