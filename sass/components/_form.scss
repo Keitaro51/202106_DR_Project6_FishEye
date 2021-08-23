@@ -17,7 +17,8 @@
         @include desktop{
             background : $secondaryBackground;
             width : 70%;
-            min-height : 910px;
+            height : calc(100vh - 75px);
+            overflow-y: scroll;
             margin:75px auto;
         }
     }

@@ -2,7 +2,7 @@ export default class FormValid{
     constructor(){
         this.errorTab = []
     }
-    validation(firstname, lastname, email){
+    validation(firstname, lastname, email, msg){
         let namePattern = /^\p{Letter}{2,}((\s|-)*\p{Letter}*)*$/u
         let emailPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
@@ -25,11 +25,16 @@ export default class FormValid{
         if(this.errorTab.length>0){
             errorList.innerHTML = ''
             errorContainer.style.display = "block"
-            errorContainer.setAttribute('aria-hidden', true)
+            errorContainer.setAttribute('aria-hidden', false)
             for(const error of this.errorTab){
                 errorList.insertAdjacentHTML('afterbegin', `<li>${error}</li>`)
             }
             this.errorTab = []
+        }else{
+            errorList.innerHTML = ''
+            errorContainer.style.display = "none"
+            errorContainer.setAttribute('aria-hidden', true)
+            console.log(firstname, lastname, email, msg)
         }
     }
 }

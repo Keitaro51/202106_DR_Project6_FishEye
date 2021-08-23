@@ -176,7 +176,8 @@ form.onsubmit = ()=>{
     let firstname = document.getElementById('firstname').value
     let lastname = document.getElementById('lastname').value
     let email = document.getElementById('email').value  
-    formValid.validation(firstname, lastname, email)
+    let msg = document.getElementById('message').value
+    formValid.validation(firstname, lastname, email, msg)
     
     return false //avoid page redirection
 }
