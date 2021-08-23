@@ -8,10 +8,10 @@ photographer.allPhotographers().then(list=>{
     for(const photographer of list){
         cardContainer.insertAdjacentHTML(
             'beforeend',
-            `<section class="card">
-                <div id="${photographer.id}" class="artistDescription" role="link" aria-label="Artiste ${photographer.name}">
+            `<section class="card" aria-label="Artiste ${photographer.name}">
+                <div id="${photographer.id}" class="artistDescription" role="link" aria-label="Lien vers la page de l'artiste">
                     <div alt="${photographer.name}" tabindex="0">
-                        <img class="avatar" loading="lazy" src="./assets/img/Sample Photos/Photographers ID Photos/${photographer.portrait}" alt="Portrait de l'artiste ${photographer.name}">
+                        <img class="avatar" loading="lazy" src="./assets/img/Sample Photos/Photographers ID Photos/${photographer.portrait}" alt="${photographer.alt}">
                         <h2 class="artist">${photographer.name}</h2>
                     </div>
                     <div tabindex="0">
@@ -73,20 +73,28 @@ scrollToTop.onkeydown = (e) =>{
 window.onload = function(){
     const tagFilters = document.getElementsByClassName('tag')
     for (const tagFilter of tagFilters){
-        tagFilter.addEventListener("click", ()=>{
-            let tagName = tagFilter.getAttribute('class')
-            tagName = tagName.split(' ')[1]
-            photographer.taggedPhotographers(tagName).then(list=>{
-                let sections = cardContainer.getElementsByTagName('section')
-                
-                for (const section of sections){
-                    if(list.includes(parseInt(section.firstElementChild.id)) == false){
-                        section.style.display = 'none'
-                    }else{
-                        section.style.display = 'block'
-                    }
-                }
-            }) 
-        })
+        tagFilter.addEventListener("click", ()=>tagSort(tagFilter))
+        tagFilter.addEventListener("keydown", (e)=>{
+            if(e.code === 'Space' || e.code === 'Enter'){
+                tagSort(tagFilter)
+            }
+        })   
     }
+}
+
+function tagSort(tagFilter){
+    
+        let tagName = tagFilter.getAttribute('class')
+        tagName = tagName.split(' ')[1]
+        photographer.taggedPhotographers(tagName).then(list=>{
+            let sections = cardContainer.getElementsByTagName('section')
+            
+            for (const section of sections){
+                if(list.includes(parseInt(section.firstElementChild.id)) == false){
+                    section.style.display = 'none'
+                }else{
+                    section.style.display = 'block'
+                }
+            }
+        }) 
 }

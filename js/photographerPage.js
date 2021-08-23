@@ -23,7 +23,7 @@ photographer.onePhotographer(photographerId).then(photographerInfo=>{
     const info = photographerInfo[0]
     document.getElementById('photographerInfo').insertAdjacentHTML(
         'beforeend',
-        `<img  loading="lazy" class="avatar" src="./assets/img/Sample Photos/Photographers ID Photos/${info.portrait}" alt="Avatar de l'artiste ${info.name}" tabindex="0">
+        `<img  loading="lazy" class="avatar" src="./assets/img/Sample Photos/Photographers ID Photos/${info.portrait}" alt="${info.alt}" tabindex="0">
         
         <div class="artistDescription">
             <h1 class="artist" tabindex="0">${info.name}</h1>
@@ -45,6 +45,12 @@ photographer.onePhotographer(photographerId).then(photographerInfo=>{
     const tagFilters = document.getElementsByClassName('tag')
     for(const tagFilter of tagFilters){
         tagFilter.addEventListener('click', () => filter(tagFilter.innerHTML.substring(1)))
+        tagFilter.addEventListener('keydown', (e) => {
+            if(e.code == 'Space' || e.code =='Enter'){
+                filter(tagFilter.innerHTML.substring(1))
+            }
+        })
+
     }
     
     localStorage.setItem('info', JSON.stringify({"name":`${info.name}`,"price":`${info.price}`}))
@@ -57,9 +63,11 @@ mediaLibrary.photographerAllMedia(photographerId).then(mediaList=>{
     
     //sort media as user selected (reinit tag filters)
     const originalSelect = document.getElementById('sortBy')
-    const newCustomSelect = document.getElementsByClassName('custom-select')[0]
+    const newCustomSelect = document.getElementsByClassName('select-selected')[0]
     let value = originalSelect.value
-    newCustomSelect.addEventListener('click', ()=>{
+    newCustomSelect.addEventListener('click', sortSelect)
+    newCustomSelect.addEventListener('change', sortSelect)   
+    function sortSelect(){
         if(originalSelect.value != value){
             value = originalSelect.value
             switch(value){
@@ -80,7 +88,7 @@ mediaLibrary.photographerAllMedia(photographerId).then(mediaList=>{
             }
         }
         lightBoxDisplay()
-    })  
+    }
 })
 
 /**
