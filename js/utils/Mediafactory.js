@@ -5,7 +5,7 @@ export default class Mediafactory{
         if(media.image){
             return `<img  tabindex="0" loading="lazy" src="./assets/img/Sample Photos/${name}/${media.image}" alt="${media.alt}"></img>`
         }else{
-            return `<video tabindex="0" ${allowControls} preload="metadata" src="./assets/img/Sample Photos/${name}/${media.video}">${media.alt}</video>`
+            return `<video tabindex="0" ${allowControls} preload="metadata" src="./assets/img/Sample Photos/${name}/${media.video}" title="${media.alt}">${media.alt}</video>`
         }
     }
     
