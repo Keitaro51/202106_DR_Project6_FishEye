@@ -60,6 +60,10 @@ photographer.onePhotographer(photographerId).then(photographerInfo=>{
 mediaLibrary.photographerAllMedia(photographerId).then(mediaList=>{
     //display all media for selected photographer
     renderAllMedia(mediaList)
+    /*Waiting for full DOM generation with all datas before allowing some functions call */
+     lightBoxDisplay();     
+     formModalDisplay();
+    
     
     //sort media as user selected (reinit tag filters)
     const originalSelect = document.getElementById('sortBy')
@@ -91,6 +95,8 @@ mediaLibrary.photographerAllMedia(photographerId).then(mediaList=>{
     }
 })
 
+
+
 /**
  * render all current artist medias
  *
@@ -117,6 +123,11 @@ function renderAllMedia(mediaList){
     likeBtn.forEach(btn => {
         btn.addEventListener('click',(e)=>{
             mediaLibrary.addLike(e)
+        })
+        btn.addEventListener('keydown',(e)=>{
+            if(e.code == 'Enter'){
+            mediaLibrary.addLike(e)
+            }
         })
     })
         
@@ -146,12 +157,6 @@ function filter(tagFilter){
             media.style.display = 'block'
         }
     }
-}
-
-/*Waiting for full DOM generation with all datas before allowing some functions call */
-window.onload = function(){
-    formModalDisplay();
-    lightBoxDisplay();
 }
 
 /**
@@ -189,11 +194,13 @@ function lightBoxDisplay(){
     const mediaCollection = mediaContainer.getElementsByClassName('media')
     for (const media of mediaCollection){
         const mediaPreview = media.firstElementChild.firstElementChild
-        mediaPreview.onclick = () =>renderLightbox(media)
+        mediaPreview.addEventListener('click', () =>{renderLightbox(media)})
+        //mediaPreview.onclick = () =>{renderLightbox(media)}
         
         keyboardNav(mediaPreview,[['Space','Enter'],[media]])
     }
     close('closeLightbox', lightbox)
+    
 }
 
 /**
